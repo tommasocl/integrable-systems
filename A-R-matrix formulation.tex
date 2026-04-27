@@ -1,0 +1,71 @@
+In this appendix we reformulate the $r$-matrix structure in operator form \cite{SemenovTyanShanskii1983,babelon2003introduction}.
+
+We fix a matrix realization $\mathcal G \subset \mathfrak{gl}(r+1)$ and use the invariant bilinear form
+\begin{equation}
+    (X,Y)=\Tr(XY),
+\end{equation}
+which identifies $\mathcal{G} \simeq \mathcal{G}^*$.
+
+\begin{definition}
+    For $L \in \mathcal{G}$ and $X \in \mathcal{G}$, we define the scalar function
+    \begin{equation}
+        L(X) \equiv (L,X).
+    \end{equation}
+\end{definition}
+
+Using this identification, any element $r_{12} \in \mathcal{G}^{\otimes 2}$ defines a linear operator
+$R:\mathcal{G} \to \mathcal{G}$ by
+\begin{equation}
+    R(X)=\Tr_2\left(r_{12}(1 \otimes X)\right).
+\end{equation}
+This provides an equivalent operator formulation of the $r$-matrix formalism.
+
+\begin{proposition}
+    Let $r_{12} \in \mathcal{G}^{\otimes 2}$ and let $R$ be the associated operator.  
+    If the Poisson brackets of $L \in \mathcal{G}$ satisfy
+    \begin{equation}
+        \{L_1,L_2\} = [r_{12},L_1] - [r_{21},L_2],
+    \end{equation}
+    then, for all $X,Y \in \mathcal{G}$,
+    \begin{equation}
+        \{L(X),L(Y)\} = L([X,Y]_R),
+    \end{equation}
+    where
+    \begin{equation}
+        [X,Y]_R = [R(X),Y] + [X,R(Y)].
+    \end{equation}
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+    Pairing the tensorial identity with $X \otimes Y$ and using the invariance of the scalar product,
+    one rewrites both sides in terms of the pairing $(L,X)$. The commutator terms reduce to expressions involving $R$, yielding the stated formula.
+\end{proof}
+
+The Yang--Baxter equation admits a natural formulation in terms of the operator $R$.
+
+\begin{proposition}
+    Let $r_{12} \in \mathcal{G}^{\otimes 2}$ be antisymmetric and let $R$ be defined as above.  
+    If $r_{12}$ satisfies the modified classical Yang--Baxter equation
+    \begin{equation}
+        [[r,r]] = \mu \Omega,
+    \end{equation}
+    then $R$ satisfies
+    \begin{equation}
+        [R(X),R(Y)] - R\left([R(X),Y] + [X,R(Y)]\right) = -\mu [X,Y]
+        \qquad \forall X,Y \in \mathcal{G}.
+    \end{equation}
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+    Pairing the tensorial identity $[[r,r]]=\mu\Omega$ with $X \otimes Y \otimes Z$
+    and using invariance, one translates the tensorial commutators into operator expressions involving $R$.
+\end{proof}
+
+In the case of the Toda chain, the $r$-matrix constructed in Section~\ref{sec:toda_rmatrix}
+defines an operator $R$ diagonal in the root space decomposition:
+\begin{equation}
+    R(H)=0, \qquad
+    R(E_{\pm\beta}) = \pm \frac12 E_{\pm\beta}
+    \qquad (\beta \text{ positive}).
+\end{equation}
+This provides an explicit solution of the modified classical Yang--Baxter equation. 

@@ -1,0 +1,168 @@
+In this section we develop the properties of the tensor Casimir element that are needed in the $r$-matrix formalism \cite{perelomov1990integrable,babelon2003introduction}.
+
+The $r$-matrix formalism is naturally expressed in terms of tensorial objects associated with Lie algebras. Among these, a distinguished role is played by the Casimir element. It provides a canonical invariant tensor and will be used to constrain the structure of $r$-matrices.
+
+We now recall its definition and main properties.
+
+\begin{definition}
+    The Casimir tensor element of $\mathfrak{gl}(n)$ associated with the trace form is defined as
+    \begin{equation}\label{eq:casimir_element}
+        C_{12} = \sum_{i,j} E_{ij} \otimes E_{ji}.
+    \end{equation}
+\end{definition}
+\begin{proposition}\label{prop:casimir_invariant}
+    The Casimir tensor element satisfies
+    \begin{equation}\label{eq:casimir_property}
+        [C_{12}, X \otimes 1 + 1 \otimes X] = 0
+        \qquad \forall X \in \mathfrak{gl}(n).
+    \end{equation}
+\end{proposition}
+
+\begin{proof}
+Let $X_1=X\otimes1$ and $X_2=1\otimes X$, and write
+\begin{equation}
+    X=\sum_{k,l}X_{kl}E_{kl}.
+\end{equation}
+By equation (\ref{eq:casimir_element}) we have
+\begin{equation}
+    [C_{12},X_1]
+    =\sum_{i,j}[E_{ij},X]\otimes E_{ji} \quad \text{ and } \quad [C_{12},X_2]
+    =\sum_{i,j}E_{ij}\otimes[E_{ji},X].
+\end{equation}
+Using
+\begin{equation}\label{eq:[E_ij,E_kl]}
+    [E_{ij},E_{kl}]
+    =\delta_{jk}E_{il}-\delta_{il}E_{kj},
+\end{equation}
+we obtain
+\begin{equation}
+    [E_{ij},X]
+    =\sum_l X_{jl}E_{il}-\sum_k X_{ki}E_{kj} \quad \text{ and } \quad 
+    [E_{ji},X]
+    =\sum_l X_{il}E_{jl}-\sum_k X_{kj}E_{ki}.
+\end{equation}
+Thus
+\begin{align}
+[C_{12},X_1]
+    &=\sum_{i,j,l}X_{jl}E_{il}\otimes E_{ji}
+    -\sum_{i,j,k}X_{ki}E_{kj}\otimes E_{ji}, \\
+    [C_{12},X_2]
+    &=\sum_{i,j,l}X_{il}E_{ij}\otimes E_{jl}
+    -\sum_{i,j,k}X_{kj}E_{ij}\otimes E_{ki}.
+\end{align}
+After relabelling dummy indices, the first term equals the fourth and the second equals the third with opposite sign. Therefore
+\begin{equation}
+    [C_{12},X_1]+[C_{12},X_2]=0.
+\end{equation}
+\end{proof}
+
+\begin{lemma}[Flip property of the Casimir tensor element]\label{lemma:flipping}
+    Let
+    \begin{equation}
+        C_{12} = \sum_{i,j} E_{ij} \otimes E_{ji}
+    \end{equation}
+    be the Casimir tensor element of $\mathfrak{gl}(n)$.
+    Then, for all $X,Y \in \mathfrak{gl}(n)$, one has
+    \begin{equation}
+        C_{12}(X \otimes Y)C_{12} = Y \otimes X.
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    Write
+    \begin{equation}
+        X = \sum_{a,b} X_{ab} E_{ab},
+        \qquad
+        Y = \sum_{c,d} Y_{cd} E_{cd}.
+    \end{equation}
+    Then
+    \begin{equation}
+        C_{12}(X \otimes Y)C_{12}
+        =
+        \sum_{i,j,k,l}
+        (E_{ij} X E_{kl}) \otimes (E_{ji} Y E_{lk}).
+    \end{equation}
+    Using
+    \begin{equation}
+        E_{ij} E_{ab} E_{kl}
+        =
+        \delta_{ja}\delta_{bk} E_{il},
+        \qquad
+        E_{ji} E_{cd} E_{lk}
+        =
+        \delta_{ic}\delta_{dl} E_{jk},
+    \end{equation}
+    we obtain
+    \begin{equation}
+        E_{ij} X E_{kl}
+        =
+        \sum_{a,b} X_{ab}\delta_{ja}\delta_{bk} E_{il}
+        =
+        X_{jk} E_{il},
+    \end{equation}
+    and similarly
+    \begin{equation}
+        E_{ji} Y E_{lk}
+        =
+        \sum_{c,d} Y_{cd}\delta_{ic}\delta_{dl} E_{jk}
+        =
+        Y_{il} E_{jk}.
+    \end{equation}
+    Therefore
+    \begin{equation}
+        C_{12}(X \otimes Y)C_{12}
+        =
+        \sum_{i,j,k,l}
+        X_{jk} Y_{il}\,
+        E_{il} \otimes E_{jk}.
+    \end{equation}
+    Rearranging the sums, we get
+    \begin{equation}
+        C_{12}(X \otimes Y)C_{12}
+        =
+        \left(\sum_{i,l} Y_{il} E_{il}\right)
+        \otimes
+        \left(\sum_{j,k} X_{jk} E_{jk}\right)
+        =
+        Y \otimes X.
+    \end{equation}
+\end{proof}
+
+The following identity will play a crucial role in the derivation of the Yang--Baxter equation in Section~\ref{sec:YB}.
+\begin{proposition}\label{prop:casimir_r_relation}
+    Let $C_{12}$ be the Casimir tensor element and let $r \in \mathfrak{gl}(n)^{\otimes 2}$. Then
+    \begin{equation}\label{eq:casimir_YB}
+        [C_{12},r_{13}] + [C_{12},r_{23}]
+        + [C_{13},r_{21}] + [C_{13},r_{23}]
+        + [C_{23},r_{21}] + [C_{23},r_{31}] = 0.
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    We rewrite the left-hand side of \eqref{eq:casimir_YB} as
+    \begin{equation}\label{eq:casimir_accorpati}
+        [C_{12}, r_{13} + r_{23}]
+        + [C_{13}, r_{21} + r_{23}]
+        + [C_{23}, r_{21} + r_{31}].
+    \end{equation}
+    We consider the first term. By Lemma~\ref{lemma:flipping}, the operator $C_{12}$ acts as the transposition of the first two tensor factors. Therefore
+    \begin{equation}
+        C_{12} r_{13} C_{12} = r_{23},
+        \qquad
+        C_{12} r_{23} C_{12} = r_{13}.
+    \end{equation}
+    Hence
+    \begin{equation}
+        C_{12}(r_{13}+r_{23})C_{12} = r_{13}+r_{23}.
+    \end{equation}
+    Since $C_{12}^2 = 1$, then
+    \begin{equation}
+        C_{12}^{-1} (r_{13} + r_{23}) C_{12} = r_{13} + r_{23} \implies [C_{12}, r_{13}+r_{23}] = 0.
+    \end{equation}
+    The same argument applied cyclically gives
+    \begin{equation}
+        [C_{13}, r_{21}+r_{23}] = 0,
+        \qquad
+        [C_{23}, r_{21}+r_{31}] = 0.
+    \end{equation}
+    Summing these three identities, we obtain \eqref{eq:casimir_YB}.
+\end{proof}

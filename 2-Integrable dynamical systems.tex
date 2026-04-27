@@ -1,0 +1,489 @@
+\subsection{Introduction}\label{subsec:Introduction}
+In Classical Mechanics, the state of a system is represented by a point in phase space, whose coordinates are the positions $q_i$ and the momenta $p_i$ \cite{babelon2003introduction,perelomov1990integrable}.  
+The Hamiltonian $H(p_i, q_i)$ is a function on this space, and the equations of motion take the form:
+
+\begin{equation} \label{eq:Hamilton}
+    \dot{q_i} = \pdv{H}{p_i}, \qquad \dot{p_i} = -\pdv{H}{q_i}.
+\end{equation}
+A dot denotes a time derivative. For any function $F(p, q)$ depending on the phase-space variables, its time evolution is given by:
+\begin{equation}
+    \dot{F} = \dv{F}{t} = \{F,H\}.
+\end{equation}
+\begin{definition}
+    The Poisson bracket between two functions $F$ and $G$ is defined as:
+    \begin{equation}
+        \{F, G\} = \sum_i \left(
+        \pdv{F}{q_i} \pdv{G}{p_i} -
+        \pdv{F}{p_i} \pdv{G}{q_i}
+        \right).
+    \end{equation}
+\end{definition}
+For the canonical coordinates we have:
+\begin{equation} \label{eq:Foundamental_Poisson}
+    \{q_i, q_j\} = 0, \qquad
+    \{p_i, p_j\} = 0, \qquad
+    \{q_i, p_j\} = \delta_{ij}.
+\end{equation}
+The Hamiltonian $H(p, q)$ is conserved during time evolution, since
+\begin{equation}
+    \dv{H}{t} = \{H,H\} = 0,
+\end{equation}
+so the motion remains confined to the subvariety $H = E$ in phase space.
+
+
+\subsection{The Liouville Arnold theorem}
+
+We consider a Hamiltonian system with phase space $M$ of dimension $2n$ \cite{babelon2003introduction,perelomov1990integrable}.  
+Using canonical coordinates $p_i, q_i$, the non-degenerate Poisson bracket is defined as in equation (\ref{eq:Foundamental_Poisson}).  
+A non-degenerate Poisson bracket on $M$ corresponds to a closed, non-degenerate 2-form $\omega$ (the symplectic form) satisfying $\dd \omega = 0$.  
+In canonical coordinates it is given by
+\begin{equation}
+    \omega = \sum_j \dd p_j \wedge \dd q_j.
+\end{equation}
+\begin{definition}[Liouville integrability]
+    Let $H$ be the Hamiltonian of the system. A system is \emph{Liouville integrable} if it admits $n$ independent conserved quantities $F_i$ $(i = 1, \dots, n)$ in involution
+    \begin{equation}
+        \{F_i, H\} = 0, \qquad \{F_i, F_j\} = 0.
+    \end{equation}
+\end{definition}
+
+\begin{theorem}[The Liouville Arnold theorem]
+     The solution of the equations of motion of a Liouville integrable system is obtained by "quadrature".
+\end{theorem}
+
+\begin{proof}
+    Let 
+    \begin{equation} \label{eq:def_alpha}
+        \alpha = \sum_i p_i \dd{q_i}
+    \end{equation}
+    be the canonical 1-form and $\omega = \dd{\alpha} =\sum_i \dd{p_i} \wedge \dd{q_i}$ be the symplectic 2-form on the phase space $M$. Now we will construct a canonical transformation
+    \begin{equation}
+        (p_i,q_i) \mapsto (F_i, \psi_i),
+    \end{equation}
+    such that the conserved quantities $F_i$ are among the new coordinates:
+    \begin{equation}
+        \omega = \sum_i \dd{p_i} \wedge \dd{q_i} = \sum_i \dd{F_i} \wedge \dd{\psi_i}.
+    \end{equation}
+    If we succeed in doing that, the equations of motion become trivial:
+    \begin{equation}
+        \begin{cases}
+            \dot{F}_j = \{F_j, H\} = 0 \\
+            \dot{\psi}_j = \{\psi_j, H \} = \pdv{H}{F_j} = \Omega_j
+        \end{cases}.
+    \end{equation}
+    The $\Omega_j$ depend only on $F$ and so are constant in time. In these coordinates, the solutions of the equation of motion are:
+    \begin{equation}
+        \begin{cases}
+            F_j(t) = F_j(0) \\
+            \psi_j(t) = \psi_j(0) + t \, \Omega_j
+        \end{cases}.
+    \end{equation}
+    To construct this canonical transformation we exhibit the \textit{generating function} $S$. Let $M_f$ be the level manifold $F_i(p,q) = f_i$. Suppose that on $M_f$ we can solve for $p_i$, $p_i = p_i(f,q)$ and consider the function
+    \begin{equation}
+        S(F,q) \equiv \int_{m_0}^{m} \alpha = \int_{q_0}^{q} \sum_i p_i(f,q) \dd{q_i},
+    \end{equation}
+    where the integration path is drawn on $M_f$ and goes from the point of coordinate $(p(f,q_0),q_0)$ to the point $(p(f,q),q)$ where $q_0$ is some reference value.
+    Assume that this function is well-defined, i.e. it is independent of the integration path from $m_0$ to $m$, then $p_j = \pdv{S}{q_j}$.
+    Defining $\psi_i$ by
+    \begin{equation}
+        \psi_i = \pdv{S}{F_i},
+    \end{equation}
+    we have
+    \begin{equation}
+        \dd{S} = \sum_j \psi_j \dd{F_j} + p_j \dd{q_j}.
+    \end{equation}
+    Since $\dd^2 S = 0$ we deduce that $\omega = \sum_j \dd{p_j} \wedge \dd{q_j} = \sum_j \dd{F_j} \wedge \dd{\psi_j}$.
+    This shows that if $S$ is a well-defined function, then the transformation is canonical.
+    To show that $S$ exists, we must prove that it is independent of the integration path. By Stokes theorem, we have to prove that:
+    \begin{equation}
+        \dd{\alpha}|_{M_f} = \omega|_{M_f} = 0.
+    \end{equation}
+    Let $X_i$ be the Hamiltonian vector field associated with $F_i$, defined by $\omega(X_i, \cdot) = - \dd F_i$
+    \begin{equation}
+        X_i = \sum_k  \pdv{F_i}{p_k} \pdv{}{q_k} - \pdv{F_i}{q_k} \pdv{}{p_k}.
+    \end{equation}
+    These vector fields are tangent to the manifold $M_f$ because the $F_j$ are in involution,
+    \begin{equation}
+        X_i(F_j) = \{F_j, F_i\} = 0.
+    \end{equation}
+    Since the functions $F_1, \dots, F_n$ are independent, the differentials $\dd F_i$ are linearly independent on $M_f$. 
+    By non-degeneracy of the symplectic form, this implies that the corresponding Hamiltonian vector fields $X_i$ are linearly independent and span the tangent space to the submanifold $M_f$ at each regular point $m \in M_f$. 
+    But then $\omega(X_i, X_j) = \{F_i, F_j\} = 0$, so $\omega|_{M_f} = 0$, and therefore $S$ is locally well-defined.
+\end{proof}
+\begin{remark}
+    From the closedness of $\alpha$ on $M_f$, the function $S$ is unchanged by \emph{continuous} deformations of the path $(m_0, m)$. However, if $M_f$ has non-trivial cycles, which is generically the case, $S$ is a multivalued function defined in a neighbourhood of $M_f$.
+    The variation over a cycle
+    \begin{equation}
+        \Delta_{\text{cycle}} S = \int_{\text{cycle}} \alpha
+    \end{equation}
+    is a function of $F$ only. This induces a multivaluedness of the variables 
+    $\psi_j$:
+    \begin{equation}
+        \Delta_{\text{cycle}} \psi_j = \frac{\partial}{\partial F_j} 
+        \Delta_{\text{cycle}} S;
+    \end{equation}
+\end{remark}
+\begin{remark}
+    The definition we have given of a Liouville integrable system requires some care.
+    Given any Hamiltonian $H$, the Darboux theorem implies that we
+    can always find locally a system of canonical coordinates on phase space $(P_1, \dots, P_n; Q_1, \dots, Q_n)$, with $H = P_1$, hence fulfilling the hypothesis of the Liouville theorem. For integrable systems we require that the conserved quantities are globally defined on a sufficiently large open set, and that the surfaces $F_i = f_i$ are well-behaved and foliate the phase space.
+    This is not generally the case for the $P_i$ constructed by the Darboux theorem. Moreover, in many standard examples, the conserved quantities are even algebraic functions of canonical coordinates on some open domain and the solutions of the equations of motion are analytic.
+\end{remark}
+\begin{remark}
+    Using the Poisson commuting functions $ F_i $, one can solve \emph{simultaneously} the $ n $ time evolution equations $ \dv{F}{t_i} = \{F, F_i\} $, since:
+    \begin{equation}
+        \dv{}{t_i} \dv{}{t_j} F - \dv{}{t_j} \dv{}{t_i} F
+        = \{\{F, F_j\}, F_i\} - \{\{F, F_i\}, F_j\}
+        = \{F, \{F_j, F_i\}\} = 0.
+    \end{equation}
+    
+    Since the Hamiltonian vector fields are well-defined and linearly independent on $M_f$, the flows define a locally free (no fixed points) and transitive (goes everywhere) action of a small open set in $ \mathbb{R}^n $ on the surface $ M_f $. Assuming that $ M_f $ is connected and compact, the flows extend to all values of the times $ t_i $ and fill the whole surface $ M_f $, hence we have a surjective action of $ \mathbb{R}^n $ on $ M_f $. The stabilizer of a point is an Abelian discrete subgroup of $ \mathbb{R}^n $ since the action is locally free, so it is of the form $ \mathbb{Z}^n $. Thus $ M_f $ appears as the quotient of $ \mathbb{R}^n $ by $ \mathbb{Z}^n $, i.e.\ a torus.
+    
+    This refinement, due to Arnold, of the Liouville theorem shows that, under suitable global hypothesis, the phase space is indeed foliated by $ n $-dimensional tori, called the Liouville tori. It is remarkable that for small perturbations of integrable systems, there still exist Liouville tori “almost everywhere”. This is the content of the famous Kolmogorov–Arnold–Moser (KAM) theorem.
+\end{remark}
+\subsection{Action--angle variables} \label{subsec:Action--angle variables}
+As already noticed in the proof of the Liouville theorem, the level manifold $M_f$ has non-trivial cycles. Under suitable compactness and connectivity conditions, the $M_f$ are $n$-dimensional tori $T_n$. This suggests the introduction of angle variables to describe the motion along the cycles. The torus $T_n$ is isomorphic to a product of $n$ circles $C_i$. We may therefore choose special angular coordinates on $M_f$ that are dual to the $n$ fundamental cycles $C_i$ (see eq. (\ref{eq:angular_variables})).\\
+The action variables $I_j$ are defined as the integrals of the canonical one-form over the cycles $C_j$:
+\begin{equation}
+    I_j = \frac{1}{2\pi} \int_{C_j} \alpha.
+\end{equation}
+The $I_j$ are functions of the constants of motion $F_j$, and we suppose they are independent, so that if the values of $I_j$ ($j = 1, \ldots, n$) are known, then the manifold $M_f$ is determined.\\
+Let us consider the canonical transformation generated by the same function as above:
+\begin{equation}
+    S(I, q) = \int_{m_0}^{m} \alpha,
+\end{equation}
+but now expressed in terms of the variables $I_i$ instead of $F_i$.  
+Denoting by $\theta_j$ the variable conjugate to $I_j$, the canonical transformation generated by $S$ is defined by
+\begin{equation}
+    p_k = \frac{\partial S}{\partial q_k}, 
+    \qquad 
+    \theta_k = \frac{\partial S}{\partial I_k}.
+\end{equation}
+The variables $\theta_k$ are canonically conjugate to the action variables $I_j$.  
+We show that they can be regarded as normalized angular variables on the cycles $C_j$.  
+That is,
+\begin{equation}\label{eq:angular_variables}
+    \frac{1}{2\pi} \int_{C_j} \dd{\theta_k} = \delta_{jk}.
+\end{equation}
+By definition of $\theta_k$, and assuming that the cycles $C_j$ can be chosen locally so as to depend smoothly on the action variables $I_k$, we can differentiate under the integral sign:
+\begin{equation}
+    \int_{C_j} \dd{\theta_k} 
+    = \pdv{}{I_k} \int_{C_j} \dd{S}, 
+    \qquad 
+    \dd{S} = \sum_i \pdv{S}{q_i} \dd{q_i} + \pdv{S}{I_i} \dd{I_i}.
+\end{equation}
+Since on the manifold $M_f$ we have $dI_i = 0$, it follows that
+\begin{equation}
+    \int_{C_j} \dd{\theta_k}
+    = \frac{\partial}{\partial I_k} 
+    \int_{C_j} 
+    \frac{\partial S}{\partial q_i} \dd{q_i} 
+    = \frac{\partial}{\partial I_k} 
+    \int_{C_j} \alpha 
+    = 2\pi \delta_{jk}.
+\end{equation}
+This proves that the variables $\theta_k$ are indeed angle variables.
+\subsubsection{Example: harmonic oscillator}
+For the one-dimensional harmonic oscillator
+\begin{equation}
+    H = \frac{p^2}{2m} + \frac{m}{2}\omega^2 q^2 = E,
+\end{equation}
+the level sets of the Hamiltonian in the phase space $(q,p)$ are ellipses of the form
+\begin{equation}
+    \frac{q^2}{A^2} + \frac{p^2}{(m\omega A)^2} = 1,
+\end{equation}
+where $A$ is the amplitude, so that
+\begin{equation}
+    E = \frac{1}{2} m \omega^2 A^2.
+\end{equation}
+Since the motion is periodic, the level manifold is a one-dimensional torus (a circle), and there is a single action variable:
+\begin{equation}
+    I = \frac{1}{2\pi} \oint_C \alpha = \frac{1}{2\pi} \oint_C p \, \dd q.
+\end{equation}
+In one degree of freedom, the integral $\oint_C p \, \dd q$ represents the oriented area enclosed by the orbit in the $(q,p)$ plane. Therefore
+\begin{equation}
+    \oint_C p \, \dd q = \pi A \cdot m\omega A = \frac{2\pi E}{\omega},
+\end{equation}
+and hence
+\begin{equation}
+    I = \frac{E}{\omega}.
+\end{equation}
+The corresponding angle variable evolves linearly in time:
+\begin{equation}
+    \theta = \omega t + \theta_0.
+\end{equation}
+
+\subsection{Lax Pairs}
+
+In many integrable systems, the time evolution can be described using a pair of matrices or operators $(L, M)$, known as a \emph{Lax pair}, which depend on the phase space variables of the system \cite{https://doi.org/10.1002/cpa.3160210503}. The dynamics of equation (\ref{eq:Hamilton}) is encoded in the equation
+
+\begin{equation} \label{eq:Ham_Lax_Pairs}
+    \dv{L}{t} \equiv \dot{L} = [M, L]
+\end{equation}
+where $[M, L]$ denotes the commutator of $M$ and $L$. 
+
+The immediate interest in the existence of a Lax pair lies in its ability to generate conserved quantities in a straightforward way. Indeed, the solution to equation (\ref{eq:Ham_Lax_Pairs}) takes the form
+
+\begin{equation}
+    L(t) = g(t) L(0) g(t)^{-1}
+\end{equation}
+where the invertible matrix $g(t)$ satisfies
+\begin{equation}
+    M = \dv{g}{t} g^{-1}
+\end{equation}
+It follows that if $I(L)$ is a function invariant under conjugation, i.e., $L \mapsto gLg^{-1}$, then $I(L(t))$ is a constant of motion.
+Such functions depend only on the eigenvalues of $L$. 
+Therefore, the evolution equation (\ref{eq:Ham_Lax_Pairs}) is said to be \emph{isospectral}, meaning that the spectrum of $L$ is preserved by the time evolution.
+
+\begin{remark}
+    Recall that a system is integrable in the sense of Liouville if two conditions are met: the number of independent conserved quantities equals the number of degrees of freedom, and these conserved quantities are mutually in involution.
+\end{remark}
+\begin{remark}
+    A Lax pair is not unique. In fact, even the size of the matrices can be modified. Moreover, there exists a natural gauge group acting on the Lax pair, defined by the transformation
+    \begin{equation}
+        L \longrightarrow gLg^{-1}, \quad M \longrightarrow gMg^{-1} + \dv{g}{t}g^{-1}
+    \end{equation}
+    where $g$ is an invertible matrix depending on the phase space variables.  
+    This reflects the non-uniqueness of the Lax representation and is a particular case of the general gauge freedom of Lax pairs.
+\end{remark}
+
+\subsection{Example: Lax pairs for oscillators} \label{subsec:Example: Lax pairs for oscillators}
+In this subsection we give a direct derivation of a Lax representation for one-dimensional systems starting from a simple ansatz.
+
+We consider the following example.
+\begin{enumerate} [label=\roman*)]
+    \item Find a Lax pair representation $\dot{L} = [M, L]$ for the one-dimensional harmonic oscillator with Hamiltonian
+    \begin{equation}
+        H = \frac{p^2}{2} + \frac{\omega^2 q^2}{2}.
+    \end{equation}
+    Use the following ansatz for the $L$-operator:
+    \begin{equation}
+        L = \begin{bmatrix}
+        p & f(q) \\
+        f(q) & -p
+        \end{bmatrix}.
+    \end{equation}
+    Determine the function $f(q)$ and the corresponding $M$ such that the Lax equation holds. 
+    \item  How does the result change if the system is modified to an anharmonic oscillator instead of the harmonic one?
+\end{enumerate}
+\textbf{Solution i).}
+From Hamilton's equations,
+\begin{equation}
+    \dot q = \pdv{H}{p} = p, \qquad
+    \dot p = - \pdv{H}{q} = -\omega^2 q,
+\end{equation}
+we find that
+\begin{equation}
+    \dot L =
+    \begin{bmatrix}
+    \dot p & f'(q)\,\dot q \\
+    f'(q)\, \dot q & -\dot p
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    -\omega^2 q & f'(q)\,p \\
+    f'(q)\,p & \omega^2 q
+    \end{bmatrix}.
+\end{equation}
+We seek a Lax representation $\dot L = [M,L]$.
+Let 
+\begin{equation}
+    M =
+    \begin{bmatrix}
+        a & b \\
+        c & d
+    \end{bmatrix}.
+\end{equation}
+Therefore
+\begin{align}
+    [M,L] = ML - LM &=
+    \begin{bmatrix}
+        ap + b f(q) & a f(q) - bp \\
+        cp + d f(q) & c f(q) - dp
+    \end{bmatrix} 
+    - 
+    \begin{bmatrix}
+        pa + c f(q) & pb + d f(q) \\
+        a f(q) - pc & b f(q) - pd
+    \end{bmatrix} \\
+     &=
+    \begin{bmatrix}
+        (b - c) f(q) & (a - d) f(q) - 2pb \\
+        (d - a) f(q) + 2pc & (c - b) f(q)
+    \end{bmatrix}.
+\end{align}
+Equating the two expressions, we obtain
+\begin{equation}
+    \dot L =
+    \begin{bmatrix}
+       -\omega^2 q & f'(q)\,p \\
+        f'(q)\,p & \omega^2 q
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        (b - c) f(q) & (a - d) f(q) - 2pb \\
+        (d - a) f(q) + 2pc & (c - b) f(q)
+    \end{bmatrix}.
+\end{equation}
+Comparing the matrix elements we obtain
+\begin{equation}\label{eq:system_lax_pari_ex}
+    \begin{cases}
+        - \omega^2 q = (b - c) f(q) \\
+        f'(q) \, p = (a - d) f(q) - 2pb \\
+        f'(q) \, p = (d - a) f(q) + 2pc
+    \end{cases}.
+\end{equation}
+Since the equality must hold for all $p$, we equate separately the coefficients of $p$ and the terms independent of $p$:
+\begin{equation}
+    b = - c, \qquad d = a.
+\end{equation}
+From the relations obtained above, we have
+\begin{equation}
+    M = 
+    \begin{bmatrix}
+        a & b \\
+        -b & a
+    \end{bmatrix}
+        = 
+        a I + 
+    \begin{bmatrix}
+        0 & b \\
+        -b & 0
+    \end{bmatrix},
+\end{equation}
+where $ I $ denotes the identity matrix.
+Since the identity commutes with any matrix, we have
+\begin{equation}
+    [L, aI] = LaI - aIL = a(LI - IL) = 0.
+\end{equation}
+Therefore, the term proportional to the identity does not contribute to the commutator $[M,L]$, and the Lax equation $\dot L = [M,L]$ remains unchanged under the transformation
+\begin{equation}
+    M \longrightarrow M - a I.
+\end{equation}
+We can thus choose, without loss of generality, $a = d = 0$ so that $M$ takes an antisymmetric form:
+\begin{equation}
+    M = 
+    \begin{bmatrix}
+        0 & b \\
+        -b & 0
+    \end{bmatrix}.
+\end{equation}
+This reflects the fact that $M$ is defined up to the addition of a multiple of the identity, which does not affect the commutator.
+The system of equations (\ref{eq:system_lax_pari_ex}) becomes
+\begin{equation}
+    \begin{cases}
+        - \omega^2 q = 2b f(q) \\
+        f'(q)\, p = -2pb
+    \end{cases}
+    \implies
+    \begin{cases}
+        f(q) = -\frac{\omega^2}{2b} q \\
+        f(q) = -2bq + K
+    \end{cases}.
+\end{equation}
+Comparing the two expressions for $f(q)$, we obtain
+\begin{equation}
+    - \frac{\omega^2}{2b}q = - 2bq + K.
+\end{equation}
+Since this equality must hold for all values of $q$, we equate separately the coefficient of $q$ and the constant term. This gives
+\begin{equation}
+    \frac{\omega^2}{2b} = 2b,
+    \qquad
+    K = 0.
+\end{equation}
+This means that $b = \pm \omega/2$ and $f(q) = \pm \omega q$. The two choices correspond to equivalent Lax representations, so we fix the sign and take
+\begin{equation}
+    f(q) = \omega q, \qquad b = - \frac{\omega}{2}.
+\end{equation}
+Thus
+\begin{equation}
+    L = 
+    \begin{bmatrix}
+        p & \omega q \\
+        \omega q & -p
+    \end{bmatrix}
+    \qquad
+    M = 
+    \begin{bmatrix}
+        0 & -\omega / 2 \\
+        \omega / 2 & 0
+    \end{bmatrix}.
+\end{equation}
+\textbf{Solution ii).}
+Let us now consider a more general one-dimensional system with Hamiltonian
+\begin{equation}
+    H(p,q) = \frac{p^2}{2} + V(q),
+\end{equation}
+whose equations of motion are
+\begin{equation}
+    \dot q = p, \qquad \dot p = -V'(q).
+\end{equation}
+We keep the same ansatz for the Lax pair,
+\begin{equation}
+    L =
+    \begin{bmatrix}
+        p & f(q) \\
+        f(q) & -p
+    \end{bmatrix},
+    \qquad
+    M =
+    \begin{bmatrix}
+        0 & b(q) \\
+        -b(q) & 0
+    \end{bmatrix},
+\end{equation}
+and require that the Lax equation $\dot L = [M,L]$
+be satisfied.
+The commutator has the same algebraic structure as before,
+\begin{equation}
+    [M,L] =
+    \begin{bmatrix}
+        2 b f & -2 p b \\
+        -2 p b & -2 b f
+    \end{bmatrix}.
+\end{equation}
+Using the equations of motion, the time derivative of $L$ is
+\begin{equation}
+    \dot L =
+    \begin{bmatrix}
+    \dot p & f'(q)\, \dot q \\
+    f'(q) \, \dot q & -\dot p
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    - V'(q) & f'(q) \, p \\
+    f'(q) \, p & V'(q)
+    \end{bmatrix}.
+\end{equation}
+Equating $\dot L = [M,L]$ componentwise gives
+\begin{equation}
+    \begin{cases}
+        V'(q) = - 2 b f(q) \\
+        f'(q) p = - 2 p b
+    \end{cases}.
+\end{equation}
+From the second equation, valid for all $p$, we deduce
+\begin{equation}
+    b = - \frac{f'(q)}{2}.
+\end{equation}
+Substituting this into the first one yields
+\begin{equation}
+    V'(q) = f(q) f'(q).
+\end{equation}
+This can be rewritten as
+\begin{equation}
+    \frac{1}{2}\dv{}{q} f(q)^2 = V'(q),
+\end{equation}
+which integrates to
+\begin{equation}
+    f^2(q) = 2 V(q) + K,
+\end{equation}
+where $K$ is an integration constant. Whenever $2V(q)+K \ge 0$, this yields
+\begin{equation}
+    f(q) = \pm \sqrt{2 V(q) + K},
+    \qquad
+    b(q) = -\frac{V'(q)}{2f(q)}.
+\end{equation}
+For the harmonic oscillator $V(q) = \tfrac{1}{2}\omega^2 q^2$,
+this reduces to $f(q) = \omega q$ and $b = - \omega/2$,
+reproducing the previous result.

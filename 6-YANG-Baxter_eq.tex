@@ -1,0 +1,161 @@
+We now give a direct treatment of the classical and modified Yang–Baxter equations in the present framework \cite{SemenovTyanShanskii1983,Sklyanin1982}.
+
+The $r$-matrix formalism can be formulated in a natural way in the setting of Lie algebras. In particular, the classical Yang--Baxter equation is most conveniently expressed in terms of tensor products of a Lie algebra and its invariant structures.
+
+We therefore introduce the general algebraic framework that will be used throughout this section.
+
+\begin{definition}
+    Let $\mathcal{G}$ be a finite-dimensional Lie algebra over $\mathbb{C}$, equipped with an invariant non-degenerate bilinear form $(\cdot,\cdot)$. We denote by $\mathcal{G}^{\otimes n}$ the $n$-fold tensor product of $\mathcal{G}$, and use the standard notation $X_1, X_2, X_3$ for the embedding of $X \in \mathcal{G}$ into the corresponding tensor factors.
+\end{definition}
+
+\begin{definition}\label{def:double_bracket}
+    Let $r \in \mathcal{G}^{\otimes 2}$. We define
+    \begin{equation}
+        [[r,r]] \equiv [r_{12},r_{13}] + [r_{12},r_{23}] + [r_{13},r_{23}]
+        \in \mathcal{G}^{\otimes 3}.
+    \end{equation}
+\end{definition}
+\begin{definition}
+    Let $C \in \mathcal{G}^{\otimes 2}$ be the Casimir tensor element.  
+    We define
+    \begin{equation}
+        \Omega \equiv [[C,C]] \in \mathcal{G}^{\otimes 3}.
+    \end{equation}
+\end{definition}
+\begin{remark}
+    The tensor $\Omega$ is called the canonical invariant element in $\mathcal{G}^{\otimes 3}$.
+\end{remark}
+\begin{definition}
+    Let $r \in \mathcal{G}^{\otimes 2}$. The \emph{classical Yang--Baxter equation} (CYBE) is
+    \begin{equation} \label{eq:CYBE}
+        [[r,r]] = 0,
+    \end{equation}
+    while the \emph{modified classical Yang--Baxter equation} (mCYBE) is
+    \begin{equation} \label{eq:mCYBE}
+        [[r,r]] = \mu \, \Omega,
+    \end{equation}
+    where $\mu \in \mathbb{C}$ is a constant.
+\end{definition}
+
+\begin{proposition}
+    Let $L$ be a Lax matrix whose Poisson brackets satisfy \eqref{eq:fund}, and assume that $r \in \mathcal{G}^{\otimes 2}$ is an antisymmetric constant tensor. If $r$ satisfies the modified classical Yang--Baxter equation, then the Jacobi identity for the Poisson bracket is satisfied:
+    \begin{equation}
+        \{\{L_1,L_2\},L_3\}
+        + \{\{L_2,L_3\},L_1\}
+        + \{\{L_3,L_1\},L_2\}
+        = 0.
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    We directly compute the terms in the Jacobi identity:
+    \begin{equation} \label{eq:L_1 L_2 L_3}
+        \{ \{L_1 , L_2 \} , L_3 \} \overset{(\ref{eq:fund})}{=} \{ [r_{12}, L_1] - [r_{21}, L_2] , L_3 \} = \{ [r_{12}, L_1] , L_3 \} - \{ [r_{21}, L_2] , L_3 \}.
+    \end{equation}
+    Since $r$ is assumed to be constant, it Poisson-commutes with $L$, and since it is antisymmetric we have
+    \begin{equation}
+        r_{21} = -r_{12}, \qquad r_{32} = -r_{23}, \qquad r_{31} = -r_{13}.
+    \end{equation}
+    We focus on 
+    \begin{equation}
+        \{ [r_{12}, L_1] , L_3 \} = \{ r_{12} L_1 - L_1 r_{12}, L_3 \} = r_{12} \{ L_1, L_3 \} - \{ L_1, L_3 \} r_{12} = [r_{12}, \{ L_1, L_3 \}],
+    \end{equation}
+    but $\{ L_1, L_3 \} = [r_{13}, L_1 ] - [r_{31}, L_3 ]$ then 
+    \begin{equation}
+        \{ [r_{12}, L_1] , L_3 \} = [r_{12}, [r_{13}, L_1]] - [r_{12}, [r_{31}, L_3]],
+    \end{equation}
+    in the same way we can compute the other term
+    \begin{equation}
+        \{ [r_{21}, L_2] , L_3 \} = [r_{21}, [r_{23}, L_2]] - [r_{21}, [r_{32}, L_3]].
+    \end{equation}
+    Hence \eqref{eq:L_1 L_2 L_3} reduces to the sum of 
+    \begin{align} 
+        \{ \{L_1, L_2 \}, L_3 \} &= [r_{12}, [r_{13}, L_1]] - [r_{12}, [r_{31}, L_3]] - [r_{21}, [r_{23}, L_2]] + [r_{21}, [r_{32}, L_3]] \label{eq:L_123},\\
+        \{ \{L_3, L_1 \}, L_2 \} &= [r_{31}, [r_{32}, L_3]] - [r_{31}, [r_{23}, L_2]] - [r_{13}, [r_{12}, L_1]] + [r_{13}, [r_{21}, L_2]] \label{eq:L_321},\\
+        \{ \{L_2, L_3 \}, L_1 \} &= [r_{23}, [r_{21}, L_2]] - [r_{23}, [r_{12}, L_1]] - [r_{32}, [r_{31}, L_3]] + [r_{32}, [r_{13}, L_1]] \label{eq:L_231}.
+    \end{align}
+    Summing \eqref{eq:L_123}, \eqref{eq:L_321}, and \eqref{eq:L_231}, we collect separately the terms proportional to $L_1$, $L_2$, and $L_3$.
+    The terms containing $L_1$ are
+    \begin{equation}
+        [r_{12},[r_{13},L_1]] - [r_{13},[r_{12},L_1]] - [r_{23},[r_{12},L_1]] + [r_{32},[r_{13},L_1]].
+    \end{equation}
+    Using the Jacobi identity in the form $[a,[b,X]] - [b,[a,X]] = [[a,b],X]$  the first two terms give
+    \begin{equation}
+        [[r_{12},r_{13}],L_1].
+    \end{equation}
+    While for the last two terms we use Jacobi again to obtain
+    \begin{equation}
+        - [r_{23},[r_{12},L_1]] =
+        - [[r_{23},r_{12}],L_1] - [r_{12},[r_{23},L_1]],
+    \end{equation}
+    and
+    \begin{equation}
+        [r_{32},[r_{13},L_1]] =
+        [[r_{32},r_{13}],L_1] + [r_{13},[r_{32},L_1]].
+    \end{equation}
+    Hence the full contribution proportional to $L_1$ becomes
+    \begin{equation} \label{eq:full_L1}
+     [[r_{12},r_{13}],L_1] + [[r_{12},r_{23}],L_1] + [[r_{13},r_{23}],L_1] - [r_{12},[r_{23},L_1]] + [r_{13},[r_{32},L_1]].
+    \end{equation}
+    Since $r_{23}$ and $r_{32}$ act on the second and third tensor factors, while $L_1$ acts on the first one, we have
+    \begin{equation}
+        [r_{23},L_1] = [r_{32},L_1] = 0 \implies - [r_{12},[r_{23},L_1]] = 0 = [r_{13},[r_{32},L_1]],
+    \end{equation}
+    hence the residual terms vanish.
+    Thus the full contribution proportional to $L_1$ becomes
+    \begin{equation}
+        [[r_{12},r_{13}] + [r_{12},r_{23}] + [r_{13},r_{23}], L_1].
+    \end{equation}
+    Using the modified classical Yang--Baxter equation, this is equal to
+    \begin{equation}
+        \mu [\Omega, L_1].
+    \end{equation}
+    Summing the three contributions, we obtain
+    \begin{equation}
+        \mu \Big( [\Omega,L_1] + [\Omega,L_2] + [\Omega,L_3] \Big)
+        = \mu [\Omega, L_1 + L_2 + L_3].
+    \end{equation}
+    Now, by definition,
+    \begin{equation}
+        \Omega = [C_{12},C_{13}] + [C_{12},C_{23}] + [C_{13},C_{23}].
+    \end{equation}
+    
+    Each of the tensors $C_{12}$, $C_{13}$ and $C_{23}$ commutes with $L_1+L_2+L_3$. 
+    Indeed, by invariance of the Casimir tensor element, $C_{12}$ commutes with $L_1+L_2$, and it trivially commutes with $L_3$; similarly, $C_{13}$ commutes with $L_1+L_3$, and $C_{23}$ commutes with $L_2+L_3$. Therefore
+    \begin{equation}
+        [C_{12},L_1+L_2+L_3]=[C_{13},L_1+L_2+L_3]=[C_{23},L_1+L_2+L_3]=0.
+    \end{equation}
+    It follows that each commutator appearing in $\Omega$ also commutes with $L_1+L_2+L_3$, hence
+    \begin{equation}
+        [\Omega, L_1+L_2+L_3] = 0.
+    \end{equation}
+\end{proof}
+
+\begin{lemma}
+    Let $r_{12} \in \mathcal{G}^{\otimes2}$ be an antisymmetric solution of the modified classical Yang--Baxter equation, i.e.
+    \begin{equation}
+        r_{21} = -r_{12}, \qquad [[r,r]] = \mu \, \Omega .
+    \end{equation}
+    Let $C_{12}$ be the Casimir tensor element. For a choice of square root of $-\mu$, define
+    \begin{equation}
+        r_{12}^{\pm} = r_{12} \pm \sqrt{-\mu}\, C_{12}.
+    \end{equation}
+    Then $r_{12}^{\pm}$ are solutions of the classical Yang--Baxter equation:
+    \begin{equation}\label{eq:cyb_pm}
+        [r_{12}^{\pm},r_{13}^{\pm}] + [r_{12}^{\pm},r_{23}^{\pm}] + [r_{13}^{\pm},r_{23}^{\pm}] = 0.
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Substituting $r_{12}^{\pm}=r_{12}\pm \sqrt{-\mu} \, C_{12}$ into \eqref{eq:cyb_pm} and expanding, we obtain
+    \begin{align}
+        [r_{12},r_{13}] + [r_{12},&r_{23}] + [r_{13},r_{23}] \notag \\
+        \pm \sqrt{-\mu} \bigg( 
+        [C_{12},r_{13}] + [C_{12},r_{23}]
+        + [r_{12},C_{13}] +& [r_{12},C_{23}]
+        + [C_{13},r_{23}] + [r_{13},C_{23}]
+        \bigg) \notag \\
+        -\mu \bigg(
+        [C_{12},C_{13}] + [C_{12},&C_{23}] + [C_{13},C_{23}]
+        \bigg)
+    \end{align}
+    By \eqref{eq:casimir_YB}, the second term vanishes. Moreover, since $r_{12}$ satisfies the modified classical Yang--Baxter equation \eqref{eq:mCYBE}, the statement follows.
+\end{proof}

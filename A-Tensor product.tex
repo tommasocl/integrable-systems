@@ -1,0 +1,123 @@
+\section{Tensor product}
+
+\begin{lemma}
+Let $A: V \to V$ and $B: W \to W$ be linear operators on finite-dimensional complex vector spaces $V$ and $W$. Then
+\begin{equation}
+    \Tr \left( A \otimes B \right) = \Tr A \, \Tr B
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+    Let $\{ e_i\}_{i=1}^n$ be a basis of $V$ and $\{ f_j\}_{j=1}^m$ a basis of $W$
+    Then 
+    \begin{equation}
+        Ae_i = \sum_h A_{hi}e_h, \qquad Bf_j = \sum_k B_{kj}f_k
+    \end{equation}
+    Thus
+    \begin{equation}
+        (A \otimes B) (e_i \otimes f_j) = \sum_{h,k} A_{hi} B_{kj} (e_h \otimes f_k)
+    \end{equation}
+    so that
+    \begin{equation}
+        (A \otimes B)_{(h,k)(i,j)} = A_{hi} B_{kj}
+    \end{equation}
+    Taking the trace we obtain
+    \begin{equation}
+        \Tr( A \otimes B) = \sum_{i,j} A_{ii} B_{jj} = \left( \sum_i A_{ii} \right)\left( \sum_j B_{jj} \right) = \Tr A \, \Tr B
+    \end{equation}
+\end{proof}
+
+\begin{lemma}
+Let $V$ and $W$ be complex vector spaces, and let $e_1,e_2 \in V$ and $f_1,f_2 \in W$ be linearly independent vectors. Then
+\begin{equation}
+    e_1 \otimes f_1 + e_2 \otimes f_2
+\end{equation}
+is not a simple tensor.
+\end{lemma}
+
+\begin{proof}
+    Suppose by contradiction that there exist $v \in V$ and $w \in W$ such that
+    \begin{equation}
+        v \otimes w = e_1 \otimes f_1 + e_2 \otimes f_2
+    \end{equation}
+    Write
+    \begin{equation}
+        v = v_1 e_1 + v_2 e_2, \qquad w = w_1 f_1 + w_2 f_2
+    \end{equation}
+    Then
+    \begin{equation}
+        v \otimes w = v_1 w_1 e_1 \otimes f_1 + v_1 w_2 e_1 \otimes f_2 + v_2 w_1 e_2 \otimes f_1 + v_2 w_2 e_2 \otimes f_2
+    \end{equation}
+    Comparing coefficients we obtain
+    \begin{equation}
+        v_1 w_1 = 1, \quad v_2 w_2 = 1, \quad v_1 w_2 = 0, \quad v_2 w_1 = 0
+    \end{equation}
+    which is impossible. Hence the tensor is not simple.
+\end{proof}
+
+\subsection{Tensor product and matrix realization}
+
+Given two vector spaces $V$ and $W$, their tensor product $V \otimes W$ is spanned by elements $v \otimes w$ with $v \in V$ and $w \in W$.  
+If $A \in \mathrm{End}(V)$ and $B \in \mathrm{End}(W)$, their tensor product acts as
+\begin{equation}
+    (A \otimes B)(v \otimes w) = (Av) \otimes (Bw)
+\end{equation}
+In a basis, this gives
+\begin{equation}
+    (A \otimes B)_{(i,k),(j,l)} = A_{ij} B_{kl}
+\end{equation}
+
+This construction is particularly useful to describe objects such as
+\begin{equation}
+    L_1 = L \otimes 1, \qquad L_2 = 1 \otimes L
+\end{equation}
+which act on different factors of the tensor product space.
+
+\subsection{Example: explicit form for a Lax matrix}
+
+Consider
+\begin{equation}
+    L =
+    \begin{bmatrix}
+    a & b \\
+    c & d
+    \end{bmatrix}
+\end{equation}
+Using the canonical basis $E_{ij}$, we write
+\begin{equation}
+    L = aE_{11} + bE_{12} + cE_{21} + dE_{22}
+\end{equation}
+
+Then
+\begin{equation}
+    L_1 = L \otimes 1, \qquad L_2 = 1 \otimes L,
+\end{equation}
+are $4 \times 4$ matrices acting on $\mathbb{C}^2 \otimes \mathbb{C}^2$, explicitly
+\begin{equation}
+    L_1 =
+    \begin{bmatrix}
+    a & 0 & b & 0 \\
+    0 & a & 0 & b \\
+    c & 0 & d & 0 \\
+    0 & c & 0 & d
+    \end{bmatrix},
+    \qquad
+    L_2 =
+    \begin{bmatrix}
+    a & b & 0 & 0 \\
+    c & d & 0 & 0 \\
+    0 & 0 & a & b \\
+    0 & 0 & c & d
+    \end{bmatrix}
+\end{equation}
+
+These represent two embeddings of the same matrix $L$ acting on different tensor components.
+
+\medskip
+
+An $r$-matrix is an element of $\mathrm{End}(V \otimes V)$ encoding the Poisson structure of the system through
+\begin{equation}
+    \{L_1, L_2\} = [r_{12}, L_1] - [r_{21}, L_2]
+\end{equation}
+
+This formalism allows one to rewrite Poisson brackets between matrix elements in a compact tensorial form.

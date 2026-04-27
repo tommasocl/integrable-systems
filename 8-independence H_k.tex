@@ -1,0 +1,73 @@
+In this section we prove the independence of the Hamiltonians associated with the Lax matrix.
+
+\begin{proposition}
+    In the case $\mathfrak{sl}(r+1)$, the functions $H_2,\dots,H_{r+1}$, with
+    \begin{equation}
+        H_k=\Tr\left(L^k\right),
+    \end{equation}
+    are functionally independent on a nonempty open subset of phase space.
+\end{proposition}
+
+\begin{proof}
+    In the case $\mathfrak{sl}(r+1)$ one has $\Tr L = 0$, hence $H_1=0$ identically.
+    Therefore we restrict to the functions $H_2,\dots,H_{r+1}$, which provide $r$ functions.
+
+    The variables $p_i$ satisfy the constraint $\sum_{i=1}^{r+1} p_i = 0$, so we may regard $p_1,\dots,p_r$ as independent variables.
+
+    For the Toda Lax matrix, one has
+    \begin{equation}
+        H_k = \sum_{i=1}^{r+1} p_i^k + R_k(p,q),
+    \end{equation}
+    where $R_k(p,q)$ has degree in $p$ strictly smaller than $k$.
+
+    We first prove that the functions
+    \begin{equation}
+        F_k(p_1,\dots,p_r) = \sum_{i=1}^{r+1} p_i^k,
+        \qquad k=2,\dots,r+1,
+    \end{equation}
+    are functionally independent on the hyperplane $\sum_i p_i = 0$.
+
+    Writing
+    \begin{equation}
+        p_{r+1} = -\sum_{i=1}^r p_i,
+    \end{equation}
+    we compute the Jacobian of the functions $F_k$ with respect to the independent variables $p_1,\dots,p_r$:
+    \begin{equation}
+        \pdv{F_k}{p_j}
+        = k p_j^{k-1} + k p_{r+1}^{\,k-1}\pdv{p_{r+1}}{p_j}
+        = k\left(p_j^{k-1} - p_{r+1}^{\,k-1}\right),
+        \qquad j=1,\dots,r.
+    \end{equation}
+
+    Thus the Jacobian matrix $J_F$ is
+    \begin{equation}
+        (J_F)_{kj} = k\left(p_j^{k-1} - p_{r+1}^{\,k-1}\right),
+        \qquad k=2,\dots,r+1,\quad j=1,\dots,r.
+    \end{equation}
+    
+    Up to the nonzero factors $k$, this matrix has the structure of a Vandermonde-type matrix built from the variables $p_1,\dots,p_{r+1}$.
+    A direct computation shows that its determinant is proportional to
+    \begin{equation}
+        \prod_{1 \le i < j \le r+1} (p_i - p_j),
+    \end{equation}
+    and is therefore nonzero whenever the $p_i$ are pairwise distinct.
+    Hence the Jacobian $J_F$ is non-degenerate on a nonempty open subset of the hyperplane $\sum_i p_i=0$, and the functions $F_2,\dots,F_{r+1}$ are functionally independent there.
+
+    We now return to the functions $H_k$. Their Jacobian satisfies
+    \begin{equation}
+        J_H = J_F + J_R,
+        \qquad
+        (J_R)_{kj} = \pdv{R_k(p,q)}{p_j}.
+    \end{equation}
+    Since $\deg_p R_k < k$, we have
+    \begin{equation}
+        \deg_p \pdv{R_k}{p_j} < k-1,
+    \end{equation}
+    so every entry of $J_R$ has degree in $p$ strictly smaller than the corresponding entry of $J_F$.
+
+    It follows that $\det J_H$ has the same leading homogeneous term, as a polynomial in $p$, as $\det J_F$.
+    In particular, since $\det J_F$ is not identically zero, neither is $\det J_H$.
+
+    Hence $\det J_H \neq 0$ on a nonempty open subset of phase space.
+    Therefore the functions $H_2,\dots,H_{r+1}$ are functionally independent on a nonempty open subset of phase space.
+\end{proof}

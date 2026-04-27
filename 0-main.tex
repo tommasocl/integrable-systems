@@ -1,0 +1,143 @@
+\documentclass[english,twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, left=3cm, right=3cm, top=4cm]{geometry}
+
+% Language & links
+\usepackage[english]{babel}
+\usepackage[hidelinks]{hyperref}
+\usepackage{etoolbox}
+
+% Math
+\usepackage{amsmath, amsfonts, amssymb, mathtools}
+\usepackage{mathrsfs}      % script letters
+\usepackage{physics}       % physics notation
+\usepackage{tikz-cd}       % commutative diagrams
+\usepackage{amsthm}        % proof
+
+% Figures
+\usepackage{graphicx} 
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{float}
+
+% Tables
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{hhline}
+\usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+
+% Layout
+\usepackage{tcolorbox}     % colored boxes
+\usepackage{enumitem}      % custom lists
+\usepackage{epigraph}      % quotes at section start
+\usepackage{fancyhdr}      % 
+\usepackage{setspace}      % interlinea 
+
+% Code
+\usepackage{minted}
+
+% Appendix
+\usepackage[toc]{appendix}
+
+% Bibliography
+\usepackage{csquotes}
+\usepackage[
+    backend=biber,
+    style=alphabetic
+]{biblatex}
+\addbibresource{references.bib}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+
+\numberwithin{equation}{section} % Numeration eq$
+
+\onehalfspacing % Spaziatura
+
+\setlength{\headheight}{13.6pt}
+
+% Titolo, autore e data PRIMA di definire \thetitle
+\title{Classical Integrable Systems}
+\author{Tommaso Cleva\footnote{tommasocleva@studenti.units.it}}
+\date{\today}
+
+% Copia il contenuto di \title dentro \thetitle, per usarlo in fancyhdr
+\makeatletter
+\let\thetitle\@title
+\makeatother
+
+\pagestyle{fancy}
+\fancyhead[LE]{\nouppercase{\leftmark}}   % sezione su pagine pari
+\fancyhead[RO]{\nouppercase{\leftmark}}   % sezione su pagine dispari
+\fancyhead[LO]{\textit{\thetitle}}        % titolo su pagine dispari
+\fancyhead[RE]{\textit{\thetitle}}        % titolo su pagine pari
+\fancyfoot[C]{\thepage}
+
+
+\begin{document}
+
+\input{titlepage}
+
+\newpage
+\begin{abstract}
+    \input{0.0-abstract}
+\end{abstract}
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+\input{1-Introduction}
+
+\paragraph{Acknowledgements}
+\input{1.0-Acknowledgements}
+
+\section{Integrable dynamical systems}
+\input{2-Integrable dynamical systems}
+
+\section{The \texorpdfstring{$\boldsymbol{r}$}{r}-matrix structure}\label{sec:rmatrix_formalism}
+\input{3-r matrix formalism}
+
+\section{Commuting flows}\label{sec:Commuting flows}
+\input{4-Commuting flows}
+
+\section{Tensor Casimir element properties}\label{sec:casimir}
+\input{5-Casimir element proprieties}
+
+\section{Classical and Modified Yang--Baxter equation}\label{sec:YB}
+\input{6-YANG-Baxter_eq}
+
+\section{The open Toda chain}
+\input{7-Toda model}
+
+\section{Independence of \texorpdfstring{${H_k}$}{Hk}}\label{sec:Independence of Hk}
+\input{8-independence H_k}
+
+\section{Conclusions}
+\input{9-Conclusions}
+
+\newpage
+\appendix
+\section{\texorpdfstring{$R$}{R}-matrix formulation}\label{app:Rmatrix}
+\input{A-R-matrix formulation}
+
+\newpage
+\nocite{*}
+\printbibliography
+
+\end{document}

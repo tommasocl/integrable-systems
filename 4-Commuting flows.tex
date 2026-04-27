@@ -1,0 +1,54 @@
+The Poisson brackets~\eqref{eq:r_matrix} imply that the spectral invariants of $L$ are in involution \cite{babelon2003introduction}. A convenient set of commuting Hamiltonians is given by
+\begin{equation}
+    H_n = \Tr\left(L^n\right).
+\end{equation}
+The Hamiltonians $H_n$ are in involution, $\{H_n,H_m\}=0$, as a consequence of the $r$-matrix structure. Furthermore, we show that the time evolution of the Lax matrix $L$ with Hamiltonian $H_n$ naturally takes the Lax form.
+\begin{proposition}
+    Suppose that $\{L_1,L_2\} = [r_{12},L_1] - [r_{21},L_2]$.
+    If we take $H_n = \Tr\left(L^n\right)$ as Hamiltonians, then the
+    equations of motion admit a Lax representation:
+    \begin{equation}
+        \dv{L}{t_n} = \{L,H_n\} = [M_n,L], \quad
+        \text{ with } \quad M_n = -n \, \Tr_1 \left( L_1^{n-1} r_{21} \right).
+    \end{equation}
+\end{proposition}
+\begin{proof}
+    We set $m = 1$ in equation~\eqref{eq:claim} obtaining
+    \begin{equation}
+        \{L_1^n,L_2\} = [a_{12}^{n,1},L_1] + [b_{12}^{n,1},L_2],
+    \end{equation}
+    where
+    \begin{equation}
+        b_{12}^{n,1} = -\sum_{p=0}^{n-1} L_1^{\,n-1-p} r_{21} L_1^p.
+    \end{equation}
+    Taking the trace over the first tensor factor, the first commutator vanishes by cyclicity of the trace, hence
+    \begin{equation}
+        \{L_2,H_n\} = \Tr_1\left(\{L_1^n,L_2\}\right) = \left[\Tr_1\left(b_{12}^{n,1}\right),L_2\right].
+    \end{equation}
+    Identifying $L_2 = 1 \otimes L$, we obtain
+    \begin{equation}
+        \{L,H_n\} = \left[\Tr_1\left(b_{12}^{n,1}\right),L\right].
+    \end{equation}
+    By cyclicity of the trace in the first factor, each term contributes equally:
+    \begin{equation}
+        \Tr_1\left(L_1^{\,n-1-p} r_{21} L_1^p\right)
+        = \Tr_1\left(L_1^{\,n-1} r_{21}\right).
+    \end{equation}
+    Therefore
+    \begin{equation}
+        \Tr_1\left(b_{12}^{n,1}\right)
+        = -n\,\Tr_1\left(L_1^{\,n-1} r_{21}\right),
+    \end{equation}
+    and thus
+    \begin{equation}
+        \{H_n,L\} = [M_n,L],
+    \end{equation}
+    with
+    \begin{equation}
+        M_n = -n\,\Tr_1\left(L_1^{\,n-1} r_{21}\right).
+    \end{equation}
+\end{proof}
+
+\begin{remark}
+    Note that the matrices $M_n$ are not unique since adding any matrix commuting with $L$ does not change the equations of motion.
+\end{remark}

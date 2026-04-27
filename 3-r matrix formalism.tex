@@ -1,0 +1,260 @@
+In this section we present a self-contained derivation of the $r$-matrix structure and its main consequences, emphasizing explicit computations. The general framework follows the standard $r$-matrix formalism developed in \cite{SemenovTyanShanskii1983,Sklyanin1982,babelon2003introduction}.
+
+A Lax pair provides a systematic way to construct conserved quantities, without making explicit use of a Poisson structure. However, Liouville integrability requires not only the existence of a Poisson structure, but also that the conserved quantities be in involution.
+We now introduce a general form of the Poisson brackets between the entries of the Lax matrix which ensures this involution property.
+
+Consider a Lax pair $L, M$ where both are $N \times N$ matrices, and assume that the matrix $L$ is diagonalizable, so that
+\begin{equation} \label{eq:lambda_matrix}
+    L = U \Lambda U^{-1}.
+\end{equation}
+The eigenvalues $\lambda_k$ of $L$ provide conserved quantities. We will not address here the question of their independence.
+
+We introduce the following notation. Denote by $E_{ij}$ the canonical basis of the $ N \times N $ matrices, with components $(E_{ij})_{kl} = \delta_{ik} \delta_{jl}$. Then we can write
+\begin{equation}
+    L = \sum_{ij} L_{ij} E_{ij}.
+\end{equation}
+The coefficients $ L_{ij} $ of the Lax matrix are functions on the phase space. We can compute the Poisson brackets $ \{L_{ij}, L_{kl}\} $ and arrange them as follows. Define
+\begin{equation}
+    L_1 \equiv L \otimes 1 = \sum_{ij} L_{ij} (E_{ij} \otimes 1), 
+    \quad
+    L_2 \equiv 1 \otimes L = \sum_{ij} L_{ij} (1 \otimes E_{ij}).
+\end{equation}
+The subscript 1 or 2 indicates that the matrix $ L $ acts on the first or second factor of the tensor product, respectively. 
+Likewise, for a tensor $ T $ belonging to the tensor product of two copies of $ N \times N $ matrices, we set
+\begin{equation}
+    T = T_{12} = \sum_{ijkl} T_{ijkl} E_{ij} \otimes E_{kl},
+    \quad
+    T_{21} = \sum_{ijkl} T_{ijkl} E_{kl} \otimes E_{ij}.
+\end{equation}
+More generally, when tensor products with several copies of $ N \times N $ matrices are involved, we denote by $ L_\alpha $ the embedding of $ L $ in the $\alpha$-th position, e.g.
+\begin{equation}
+    L_3 = 1 \otimes 1 \otimes L \otimes \cdots,
+    \quad
+    T_{\alpha\beta} \text{ the embedding of } T \text{ in positions } \alpha \text{ and } \beta.
+\end{equation}
+We also use $ \Tr_\alpha $ to denote the partial trace over the $\alpha$-th factor in a tensor product. For instance,
+\begin{equation}
+    \Tr_1 T_{12} = \sum_{ijkl} T_{ijkl} \, \Tr(E_{ij}) \, E_{kl}.
+\end{equation}
+\begin{definition}
+    Define $ \{L_1, L_2\} $ as the matrix of Poisson brackets between the entries of $ L $:
+    \begin{equation}
+        \{L_1, L_2\} = \sum_{ijkl} \{L_{ij}, L_{kl}\} E_{ij} \otimes E_{kl}.
+    \end{equation}
+\end{definition}
+For integrable systems, the Poisson brackets between the entries of the Lax matrix admit a particularly simple and structured form.
+
+We collect a number of auxiliary results that will be used in the formulation of the $r$-matrix structure. We start with a general identity, which will serve as the basis for the subsequent lemmas and corollaries.
+
+\begin{proposition}\label{prop:leibniz-expand-general}
+    Let $L$ and $X$ be matrices whose entries belong to a Poisson algebra.
+    Set $L_1 = L \otimes 1$ and $X_2 = 1 \otimes X$.
+    Assume that the Poisson bracket is extended entrywise to matrix-valued functions and satisfies the Leibniz rule in each argument.
+    Then, for every integer $n \ge 1$,
+    \begin{equation}\label{eq:leibniz-expand-general}
+        \{L_1^n, X_2\}
+        =
+        \sum_{p=0}^{n-1}
+        L_1^{n-1-p} \{L_1, X_2\} L_1^p.
+    \end{equation}
+\end{proposition}
+
+\begin{proof}
+    We argue by induction on $n$.
+    For $n=1$, the statement is immediate.
+    Assume that \eqref{eq:leibniz-expand-general} holds for some $n$. Then, by the Leibniz rule,
+    \begin{equation}
+        \{L_1^{n+1}, X_2\} = \{L_1 L_1^n, X_2\} = L_1 \{L_1^n, X_2\} + \{L_1, X_2\} L_1^n.
+    \end{equation}
+    Using the inductive hypothesis, we obtain
+    \begin{equation}
+        \{L_1^{n+1}, X_2\}
+        = \sum_{p=0}^{n-1} L_1^{n-p} \{L_1, X_2\} L_1^p + \{L_1, X_2\} L_1^n.
+    \end{equation}
+    The last term is precisely the contribution corresponding to $p=n$, hence
+    \begin{equation}
+        \{L_1^{n+1}, X_2\}
+        = \sum_{p=0}^{n} L_1^{n-p} \{L_1, X_2\} L_1^p.
+    \end{equation}
+    This proves the inductive step and therefore the statement for all $n \ge 1$.
+\end{proof}
+
+\begin{corollary}\label{cor:leibniz-expand}
+    Let $L$ be a matrix whose entries belong to a Poisson algebra.
+    Set $L_1 = L \otimes 1$ and $L_2 = 1 \otimes L$.
+    Assume that the Poisson bracket is extended entrywise to matrix-valued functions and satisfies the Leibniz rule in each argument.
+    Then, for all integers $n,m \ge 1$,
+    \begin{equation}\label{eq:leibniz-expand}
+        \{L_1^n,L_2^m\}
+        =
+        \sum_{p=0}^{n-1}\sum_{q=0}^{m-1}
+        L_1^{\,n-1-p}L_2^{\,m-1-q}
+        \{L_1,L_2\}
+        L_1^pL_2^q
+    \end{equation}
+\end{corollary}
+
+\begin{proof}
+    Applying Proposition \ref{prop:leibniz-expand-general} with $X_2 = L_2^m$, we obtain
+    \begin{equation}
+        \{L_1^n, L_2^m\}
+        =
+        \sum_{p=0}^{n-1}
+        L_1^{n-1-p} \{L_1, L_2^m\} L_1^p.
+    \end{equation}
+    Expanding $\{L_1, L_2^m\}$ by the Leibniz rule in the second argument gives
+    \begin{equation}
+        \{L_1, L_2^m\}
+        =
+        \sum_{q=0}^{m-1}
+        L_2^{m-1-q} \{L_1, L_2\} L_2^q.
+    \end{equation}
+    Substituting this into the previous formula yields
+    \begin{equation}
+        \{L_1^n, L_2^m\}
+        =
+        \sum_{p=0}^{n-1} \sum_{q=0}^{m-1}
+        L_1^{n-1-p} L_2^{m-1-q}
+        \, \{L_1, L_2\} \,
+        L_1^p L_2^q,
+    \end{equation}
+    which proves the claim.
+\end{proof}
+
+\begin{proposition}\label{prop:fund}
+     Let $L$ be a matrix whose entries belong to a Poisson algebra.
+    Set $L_1 = L \otimes 1$ and $L_2 = 1 \otimes L$.
+    Assume that the Poisson bracket is extended entrywise to matrix-valued functions and satisfies the Leibniz rule in each argument.
+    Suppose that there exists an element $r$ of the tensor product algebra such that
+    \begin{equation}\label{eq:fund}
+        \{L_1,L_2\} = [r_{12},L_1] - [r_{21},L_2].
+    \end{equation}
+    Then, for all integers $n, m \ge 1$,
+    \begin{equation}\label{eq:claim}
+        \{L_1^n, L_2^m\} = [a_{12}^{n,m}, L_1] + [b_{12}^{n,m}, L_2],
+    \end{equation}
+    where
+    \begin{align}
+        a_{12}^{n,m} &=\sum_{p=0}^{n-1}\sum_{q=0}^{m-1} L_1^{n-1-p}L_2^{m-1-q}r_{12}L_1^{p}L_2^{q}, \\
+        b_{12}^{n,m} &=-\sum_{p=0}^{n-1}\sum_{q=0}^{m-1} L_1^{n-1-p}L_2^{m-1-q}r_{21}L_1^{p}L_2^{q}.
+    \end{align}
+\end{proposition}
+\begin{proof}
+   We start from the result of the previous corollary~\ref{cor:leibniz-expand}:
+    \begin{equation}
+        \{ L_1^n, L_2^m \} = \sum_{p=0}^{n-1} \sum_{q=0}^{m-1} L_1^{n-1-p} L_2^{m-1-q} \{ L_1, L_2 \} L_1^{p} L_2^{q}.
+    \end{equation}
+    Using Corollary~\ref{cor:leibniz-expand} and substituting \eqref{eq:fund}, we obtain
+    \begin{equation}
+        \{ L_1^n, L_2^m \}
+        =\sum_{p=0}^{n-1} \sum_{q=0}^{m-1}
+        L_1^{n-1-p} L_2^{m-1-q} \left( [r_{12}, L_1] - [r_{21}, L_2] \right) L_1^{p} L_2^{q}.
+    \end{equation}
+    Split the sum into the two corresponding contributions. For the $r_{12}$-term we have
+    \begin{align}
+        \sum_{p,q} L_1^{n-1-p} L_2^{m-1-q} [r_{12}, L_1] L_1^{p} L_2^{q} &= \sum_{p,q} \left( L_1^{n-1-p} L_2^{m-1-q} r_{12} L_1^{p+1} L_2^{q} - L_1^{n-p} L_2^{m-1-q} r_{12} L_1^{p} L_2^{q} \right)\\
+        &= \left[ \sum_{p,q} L_1^{n-1-p}L_2^{m-1-q} r_{12} L_1^{p}L_2^{q}\;, \;L_1 \right],
+    \end{align}
+    where in the second line we have used that $L_1$ and $L_2$ commute, so that the factors $L_1^{n-1-p}L_2^{m-1-q}$ and $L_1^{p}L_2^{q}$ commute with $L_1$. Hence
+    \begin{equation}
+        X [r_{12},L_1] Y = [X r_{12} Y, L_1],
+    \end{equation}
+    and we obtain
+    \begin{equation}
+        a_{12}^{n,m} = \sum_{p=0}^{n-1}\sum_{q=0}^{m-1}
+        L_1^{n-1-p} L_2^{m-1-q} r_{12} L_1^{p} L_2^{q}.
+    \end{equation}
+    An analogous computation for the $-[r_{21},L_2]$ term gives
+    \begin{equation}
+    \sum_{p,q} L_1^{n-1-p} L_2^{m-1-q} (-[r_{21},L_2]) L_1^{p} L_2^{q}
+    =
+    \left[
+    -\sum_{p,q} L_1^{n-1-p} L_2^{m-1-q} r_{21} L_1^{p} L_2^{q},
+    L_2
+    \right].
+\end{equation}
+Combining the two commutators yields \eqref{eq:claim}.
+
+
+    
+\end{proof}
+
+\begin{lemma} \label{lemma:TrL^n involution}
+    If (\ref{eq:claim}) holds then the quantities $\Tr(L^n)$ are in involution, i.e.
+    \begin{equation}
+        \{\Tr(L^n), \Tr(L^m)\} = 0 \quad \forall \, n, m.
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    Take the trace over both spaces:
+    \begin{equation}
+        \{\Tr\left(L^n\right) , \Tr\left(L^m\right)\}
+        = \Tr_{12}\left(\left\{L_1^n , L_2^m\right\}\right).
+    \end{equation}
+    Using the linearity 
+    \begin{equation}
+        \{\Tr\left(L^n\right) , \Tr\left(L^m\right)\} 
+        = \Tr_{12}\left(\left[a_{12}^{n,m} , L_1\right]\right) + \Tr_{12}\left(\left[b_{12}^{n,m} , L_2\right]\right).
+    \end{equation}
+    By cyclicity of the trace
+    \begin{equation}
+        \Tr_{12}\left(\left[X , Y\right]\right) = 0,
+    \end{equation}
+    hence
+    \begin{equation}
+        \{\Tr\left(L^n\right) , \Tr\left(L^m\right)\} = 0,
+    \end{equation}
+    this shows that the spectral invariants $\Tr(L^n)$ are in involution.
+\end{proof}
+
+
+\begin{corollary} \label{cor:importante}
+    Assume there exists an element $r_{12}$ of the tensor product algebra such that
+    \begin{equation}
+        \{L_1, L_2\} = [r_{12}, L_1] - [r_{21}, L_2].
+    \end{equation}
+    Then the spectral invariants $\Tr (L^n)$ are in involution, i.e.
+    \begin{equation}
+        \{\Tr(L^n), \Tr(L^m)\} = 0 \quad \, \forall \, n,m.
+    \end{equation}
+\end{corollary}
+
+\begin{proof}
+    This follows directly from Proposition~\ref{prop:fund} together with Lemma~\ref{lemma:TrL^n involution}.
+\end{proof}
+
+We now address the converse problem: starting from the involution of the eigenvalues of $L$, we show that, locally on phase space, one can reconstruct an $r$-matrix structure of the form (\ref{eq:r_matrix}).
+
+\begin{proposition}[Local reconstruction of an $r$-matrix]\label{prop:existence_rmatrix}
+    Assume that $L$ is locally diagonalizable as in (\ref{eq:lambda_matrix}) (for instance, with simple spectrum), and that its eigenvalues Poisson commute,
+    \begin{equation}
+        \{\lambda_i,\lambda_j\}=0 \quad \forall \, i,j.
+    \end{equation}
+    Then, locally on phase space, one can reconstruct an element $r_{12}$ of the tensor product algebra such that
+    \begin{equation}\label{eq:r_matrix}
+        \{L_1, L_2\} = [r_{12}, L_1] - [r_{21}, L_2].
+    \end{equation}
+\end{proposition}
+
+\begin{proof}[Sketch of proof]
+We outline the construction locally on a region of phase space where $L$ is diagonalizable with simple spectrum, so that one can choose $U$ smoothly such that $L = U \Lambda U^{-1}$.
+
+Using the Leibniz rule, we expand
+\begin{equation}
+    \{L_1,L_2\} = \{U_1 \Lambda_1 U_1^{-1}, U_2 \Lambda_2 U_2^{-1}\}.
+\end{equation}
+All terms can be expressed in terms of $U$, $\Lambda$, and the brackets $\{U_1,U_2\}$, $\{U_1,\Lambda_2\}$, $\{\Lambda_1,U_2\}$, using the identity
+\begin{equation}
+    \{U^{-1},X\} = - U^{-1} \{U,X\} U^{-1}.
+\end{equation}
+
+Conjugating the whole expression by $U_1^{-1} \otimes U_2^{-1}$, one reduces to computing the Poisson brackets of $\Lambda$ together with the transformed brackets of $U$. The terms involving $\{\Lambda_1,\Lambda_2\}$ vanish by assumption, since the eigenvalues Poisson commute.
+
+The remaining contributions can be organized into commutators with $\Lambda_1$ and $\Lambda_2$, yielding an expression of the form
+\begin{equation}
+    \{L_1,L_2\} = [r_{12},L_1] - [r_{21},L_2],
+\end{equation}
+where $r_{12}$ is constructed locally from $U$ and its Poisson brackets.
+
+The construction is therefore valid on any open set where the diagonalization of $L$ can be chosen smoothly.
+\end{proof}
